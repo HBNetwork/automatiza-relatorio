@@ -1,5 +1,7 @@
 # automatiza-relatorio
 
+Demonstração no Google Collab: https://github.com/diogaumbueno/AutomatizaRelatorio/blob/main/AutomatizaRelatorio.ipynb
+
 Video do Openspace com a demonstração do Software Rodando
 
 https://henriquebastos.nutror.com/curso/c45d6c491bbaf11a5f7df9e2e868899495d56689/aula/5374061
