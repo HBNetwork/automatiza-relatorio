@@ -1,0 +1,69 @@
+style(lang="scss").
+  table{ page-break-after: always; }
+  header { font-size: 50px; font-family: ariel; color: #00FA9A; }
+  p { font-weight: bold }
+  @page {
+    margin: 1cm 0 2cm 0cm;
+    @bottom-center {
+      content: "";
+    }
+  }
+
+img(style="width:150px; display:block; margin:0 auto;"
+    src="endereço completo da imagem da logo")
+
+#sidebar: p Atualizado por Diogo Bueno - {{ hoje }}
+
+
+h1 Relatório descritivo de Vendas
+
+.ui.piled.segment: p.
+  Este relatório contempla informações relativas às vendas anuais das lojas. Esse relatório foi desenvolvido para monitorar  as vendas das unidades pertencentes à rede de lojas e
+  detalhar as vendas de cada unidade
+  
+
+
+:markdown
+  ***Gerado automaticamente e conferido pelo analista Diogo Bueno.***
+  
+  ```
+  Controle de Vendas {{ hoje }}.pdf
+  ```
+  
+
+
+  
+.ui.container
+  .ui.icon.message.yellow.block-center
+    i.exclamation.circle.icon
+    .content
+      .header Informações atualizadas do último dia.
+      p.
+        Alguma informação relevante
+
+
+:markdown
+  ##  Informações Atualizadas
+  
+  Até o presente momento, o relatório considera {{ planilha.shape[0] }} entradas. 
+  
+
+
+
+
+:markdown
+  ### Últimos lançamentos
+  
+  Seguem abaixo informações relativas às vendas e suas caracteristicas
+
+  Últimas vendas gerais 
+
+
+  {{ pdf_tools.dataframe_to_html(planilha.iloc[-7:]) }}
+
+  Informações relativas ao faturamento de cada uma das lojas pertencentes à rede.
+
+ {{ pdf_tools.dataframe_to_html(faturamento.iloc[:25].reset_index()) }} 
+
+
+p.main-paragraph Qualquer dúvida, ligue para a gerência.
