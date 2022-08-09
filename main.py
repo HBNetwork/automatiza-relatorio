@@ -1,12 +1,19 @@
 import pandas as pd
 from datetime import datetime
 from pdf_reports import pug_to_html, write_report
-# A biblioteca datetime vai ser fundamental para criação do relatório da data, uma vez importada, a cada vez que o código for gerado, o relatório ficará com a data atual
+
+import sys
+parametro = []
+for param in sys.argv :
+    parametro.append(param)
+
+#print(parametro.pop())
 
 #pip install pdf_reports -q
 
 
-planilha = pd.read_excel("planilhas/Vendas_diogo.xlsx")
+planilha = pd.read_excel(parametro.pop())
+#planilha = pd.read_excel("planilhas/Vendas_diogo.xlsx")
 
 # Calculos da planilha
 
@@ -19,16 +26,13 @@ quantidade = quantidade.sort_values(by='ID Loja', ascending=False)
 
 
 hoje = datetime.now().date()
-# a variavél hoje vai ser importante para a atualização do relatório
+
 
 html = pug_to_html('planilhas/modelo_vendas.pug',planilha=planilha,hoje=hoje, faturamento=faturamento)
-# localizar o caminho do modelo de relatório e informar todos as váriavéis que são expostas no relatório final, em PDF
+
 
 write_report(html, 'vendas.pdf')
-# aqui vamos criar o pdf, nomeando ele. Lembre-se de alterar o dados no .pug de acordo com sua necessidade.
 
-
-#Calculo para apresentação do relatório
 faturamento.iloc[0:5].reset_index()
 
 quantidade.iloc[:25].reset_index()
