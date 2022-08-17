@@ -59,11 +59,14 @@ def escreve_pdf(filename, pugfile, data=hoje, **params):
     write_report(html, filename)
 
 
-if __name__ == "__main__":
-    args = cli()
-    planilha = le_planilha(args.xls)
+def main(xls, pdf, pug):
+    planilha = le_planilha(xls)
     faturamento = calcula_faturamento(planilha)
     quantidade = calcula_quantidade(planilha)
     ticket_medio = calcula_ticket_medio(faturamento, quantidade)
     resumo = calcula_resumo(faturamento, quantidade, ticket_medio)
-    escreve_pdf(args.pdf, pugfile=args.pug, planilha=planilha, faturamento=faturamento)
+    escreve_pdf(pdf, pugfile=pug, planilha=planilha, faturamento=faturamento, resumo=resumo)
+
+
+if __name__ == "__main__":
+    main(**vars(cli()))
