@@ -1,15 +1,26 @@
 import pandas as pd
 from datetime import datetime
 from pdf_reports import pug_to_html, write_report
+from argparse import ArgumentParser, FileType, ArgumentTypeError
 
-import sys
+
+def file_must_exist(filename, mode="r"):
+    try:
+        with open(filename, mode=mode) as f:
+            pass
+    except OSError as exc:
+        raise ArgumentTypeError(exc)
 
 
 def cli():
-    if len(sys.argv) != 2:
-        sys.exit(1)
 
-    return sys.argv[-1]
+    parser = ArgumentParser("autoreport", description="Gera relatórios lindões.")
+    parser.add_argument("xls", type=FileType("rb"), help="Nome do arquivo da planilha fonte.")
+    parser.add_argument("pdf", type=FileType("wb"), help="Nome do arquivo do relatório gerado.")
+    parser.add_argument("-p", "--pug", type=file_must_exist, default="planilhas/modelo_vendas.pug", help="Arquivo de " \
+                                                                                                    "estilo.")
+
+    return parser.parse_args()
 
 
 def le_planilha(filename):
@@ -49,10 +60,10 @@ def escreve_pdf(filename, pugfile, data=hoje, **params):
 
 
 if __name__ == "__main__":
-    filename = cli()
-    planilha = le_planilha(filename)
+    args = cli()
+    planilha = le_planilha(args.xls)
     faturamento = calcula_faturamento(planilha)
     quantidade = calcula_quantidade(planilha)
     ticket_medio = calcula_ticket_medio(faturamento, quantidade)
     resumo = calcula_resumo(faturamento, quantidade, ticket_medio)
-    escreve_pdf("vendas.pdf", pugfile="planilhas/modelo_vendas.pug", planilha=planilha, faturamento=faturamento)
+    escreve_pdf(args.pdf, pugfile=args.pug, planilha=planilha, faturamento=faturamento)
