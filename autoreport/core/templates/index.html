@@ -1,0 +1,45 @@
+
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Autoreport - Envie um arquivo XLSX</title>
+    <style>
+        div.container {
+            
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+<body>
+    <div class="container">
+    <header>
+        <h1>AUTOREPORT</h1>
+    </header>    
+    <main>
+        <form>
+            <label for="fileInput">Selecione o arquivo:</label>
+            <input type="file" id="fileInput" name="fileInput" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"  required /><br/><br/>
+
+            <label for="pugfileTemplate">Escolha o template PUGGILE:</label>
+            <select id="pugfileTemplate" name="pugfileTemplate" required>
+              <option value="pugfile1">Pugfile1</option>
+              <option value="pugfile2">Pugfile2</option>
+              <option value="pugfile3">Pugfile3</option>
+            </select><br/><br/>
+                        
+            <label for="nameOutputFile">Nome do arquivo de saida:</label><br/>
+            <input type="text" id="nameOutputFile" name="nameOutputFile" required  value="output.pdf"/><br/><br/>
+
+            <input type="submit" value="Gerar PDF" />
+        </form>
+    </main>
+    <footer>
+        <h6>&copy; Treinamento PDS – Agosto de 2022</h6>
+    </footer>
+    </div>
+</body>
+</html>

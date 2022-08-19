@@ -28,4 +28,7 @@ WeasyPrint==52
 webencodings==0.5.1
 zipp==3.8.1
 zope.interface==5.4.0
-openpyxl==3.0.10
+asgiref==3.5.2
+Django==4.1
+sqlparse==0.4.2
+tzdata==2022.2
