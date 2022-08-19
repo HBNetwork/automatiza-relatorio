@@ -8,6 +8,7 @@ def file_must_exist(filename, mode="r"):
     try:
         with open(filename, mode=mode) as f:
             pass
+        return filename
     except OSError as exc:
         raise ArgumentTypeError(exc)
 
@@ -57,7 +58,7 @@ def hoje(now=datetime.now):
 def escreve_pdf(filename, pugfile, data=hoje, **params):
     html = pug_to_html(pugfile, hoje=data(), **params)
     write_report(html, filename)
-
+    
 
 def main(xls, pdf, pug):
     planilha = le_planilha(xls)
