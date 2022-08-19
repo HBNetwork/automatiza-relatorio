@@ -22,6 +22,9 @@ b) Ofertar o projeto como um SaaS?
 c) Como "vender" esse projeto para uma demanda real?
 
 Bibliotecas:
+Dependência: https://doc.courtbouillon.org/weasyprint/stable/first_steps.html  
+Não gera o PDF sem instalar o GTK3 (Windows) ou o PANGO (MAC)
+
 
 https://doc.courtbouillon.org/weasyprint/stable/first_steps.html#windows
 https://pypi.org/project/xlrd/
