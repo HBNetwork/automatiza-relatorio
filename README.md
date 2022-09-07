@@ -1,34 +1,21 @@
 # automatiza-relatorio
 
-Demonstração no Google Collab: https://github.com/diogaumbueno/AutomatizaRelatorio/blob/main/AutomatizaRelatorio.ipynb
 
-Video do Openspace com a demonstração do Software Rodando
+## Considerações iniciais do projeto
+    
+Este projeto foi elaborado no intuito de suprir uma necessidade real: extrair informações relevantes de uma base de daods gerando um relaório automatizado em PDF.
 
-https://henriquebastos.nutror.com/curso/c45d6c491bbaf11a5f7df9e2e868899495d56689/aula/5374061
+## Problema e Solução
 
-Esse peojeto contempla a necessidade real por uma rotina mais eficiente e rápida quanto à análise dos dados, possibilitando ainda gerar um relatório em PDF com as análises desejadas.
+Utilzando Python podemos automatizar rotinas que exigem tarefas repepetivas. No caso real desse projeto, é necessário um gestor alimentar uma base de dados constantemente, extraindo  informações de outras unidades, diariamente.
 
-Observações:
+A solução proposta contempla a criação de um arquivo único, gerado automaticamente e devidamente exportado para PDF.
 
-Para facilitar a aplicação do projeto em outras IDE, disponibilizei os links dos arquivos utilizados nesse projeto.
-O arquivo de extensão.pug carrega todas as informações para a criação do PDF.
-Demandas:
+## Procedimentos necessários
 
-Tendo em vista a alta aplicabilidade e potencial do projeto, o que valeria a pena?
-a) Carregar em um template Django?
+Em nossos testes, foi observado uma certa dependência ao instalar a lib pdf_reports.
 
-b) Ofertar o projeto como um SaaS?
+Em resumo, identificamos que usúarios do MAC necessitam instalação do pacote PANGO, enquanto usuários do Windows necessitam instalação do GTK.
 
-c) Como "vender" esse projeto para uma demanda real?
+Para maiores informações : https://doc.courtbouillon.org/weasyprint/stable/first_steps.html
 
-Bibliotecas:
-Dependência: https://doc.courtbouillon.org/weasyprint/stable/first_steps.html  
-Não gera o PDF sem instalar o GTK3 (Windows) ou o PANGO (MAC)
-
-
-https://doc.courtbouillon.org/weasyprint/stable/first_steps.html#windows
-https://pypi.org/project/xlrd/
-https://zoomadmin.com/HowToInstall/UbuntuPackage/libcairo2
-https://github.com/Kozea/WeasyPrint/issues/721
-https://pillow.readthedocs.io/en/latest/installation.html
-https://github.com/Edinburgh-Genome-Foundry/pdf_reports
